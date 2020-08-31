@@ -7,6 +7,7 @@ import 'whatwg-fetch';
 import { assert } from 'console';
 
 describe('AppointmentForm', () => {
+  const customer = { id: 123 };
   let render, form, field, labelFor, element, elements, change, submit;
 
   beforeEach(() => {
@@ -92,6 +93,7 @@ describe('AppointmentForm', () => {
       render(
         <AppointmentForm
           {...props}
+          customer={customer}
           {...{ [fieldName]: 'value' }}
           onSubmit={() => { }}
         />
@@ -108,6 +110,7 @@ describe('AppointmentForm', () => {
       render(
         <AppointmentForm
           {...props}
+          customer={customer}
           {...{ [fieldName]: 'existingValue' }}
           onSubmit={() => { }}
         />
@@ -298,6 +301,7 @@ describe('AppointmentForm', () => {
       render(
         <AppointmentForm
           availableTimeSlots={availableTimeSlots}
+          customer={customer}
           today={today}
           startsAt={availableTimeSlots[0].startsAt}
         />
@@ -312,6 +316,7 @@ describe('AppointmentForm', () => {
       render(
         <AppointmentForm
           availableTimeSlots={availableTimeSlots}
+          customer={customer}
           today={today}
           startsAt={availableTimeSlots[0].startsAt}
         />
@@ -334,6 +339,7 @@ describe('AppointmentForm', () => {
       const saveSpy = jest.fn();
       render(
         <AppointmentForm
+          customer={customer}
           availableTimeSlots={availableTimeSlots}
           today={today}
           startsAt={availableTimeSlots[0].startsAt}
@@ -349,6 +355,7 @@ describe('AppointmentForm', () => {
       const saveSpy = jest.fn();
       render(
         <AppointmentForm
+          customer={customer}
           availableTimeSlots={availableTimeSlots}
           today={today}
           startsAt={availableTimeSlots[0].startsAt}
