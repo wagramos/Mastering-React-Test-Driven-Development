@@ -1,6 +1,4 @@
 import React, { useState } from 'react';
-import { response } from 'express';
-import { setegid } from 'process';
 
 export const CustomerForm = ({
   firstName,

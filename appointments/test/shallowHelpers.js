@@ -19,7 +19,7 @@ export const childrenOf = element => {
 };
 
 export const type = typeName => element => element.type === typeName;
-export const id = id => element => element.props && element.id === id;
+export const id = elementId => element => element.props && element.props.id === elementId;
 export const className = className => element => element.props.className === className;
 export const click = element => element.props.onClick();
 
@@ -28,10 +28,13 @@ const elementsMatching = (element, matcherFn) => {
     return [element];
   }
   return childrenOf(element)
-    .reduce((acc, child) => [
-      ...acc,
-      ...elementsMatching(child, matcherFn)
-    ], []);
+    .reduce((acc, child) =>
+      child === null
+        ? [...acc]
+        : [
+          ...acc,
+          ...elementsMatching(child, matcherFn)
+        ], []);
 };
 
 export const createShallowRenderer = () => {
