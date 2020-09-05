@@ -16,6 +16,7 @@ export const createContainer = () => {
   return {
     click: simulateEvent('click'),
     change: simulateEvent('change'),
+    blur: simulateEvent('blur'),
     submit: simulateEventAndWait('submit'),
     render: component => act(() => { ReactDOM.render(component, container) }),
     renderAndWait: async component => await act(async () => ReactDOM.render(component, container)),
